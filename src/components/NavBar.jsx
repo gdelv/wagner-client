@@ -11,7 +11,7 @@ const bounceModal = keyframes`${tadaFlip}`;
 
 const StyledNav = styled.nav`
     max-width: 100%;
-    min-height: 10vh;
+    height: 12vh;
     background: #ee3225;
     display: flex;
     justify-content: space-between;
@@ -22,7 +22,7 @@ const StyledNav = styled.nav`
 const LogoImg = styled.img`
     width: 100px;
     position: relative;
-    top: 1vh;
+    top: 2vh;
     height: 8vh;
 `;
 
@@ -35,7 +35,7 @@ const NavBar = () => {
     setModal(!modal);
   };
   const StyledModal = styled.div`
-    min-height: 90vh;
+    height: 90vh;
     width: 100%;
     position: relative;
     display: flex;

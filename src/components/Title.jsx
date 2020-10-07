@@ -1,19 +1,22 @@
 import React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { bounceInDown } from 'react-animations';
+import styled from 'styled-components';
 
-const bounceTitle = keyframes`${bounceInDown}`;
-
-const StyledTitle = styled.h1`
-    font-size: 3rem;
-    // animation: ${bounceTitle} 1s linear 0s 1 forwards;
-    font-family: 'Roboto', sans-serif;
-
-`;
 
 const Title = (props) => {
   // eslint-disable-next-line react/prop-types
-  const { title } = props;
+  const { title, backColor, size } = props;
+  const StyledTitle = styled.h1`
+      font-size: ${size};
+      border-radius: 20%;
+      margin: 0 auto;
+      min-width: fit-content;
+      // change max-width
+      max-width: 120px;
+      font-family: 'Roboto', sans-serif;
+      background: ${backColor};
+      word-wrap: break-word;
+
+  `;
   return (
     <StyledTitle>{title}</StyledTitle>
   );
