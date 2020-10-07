@@ -4,7 +4,7 @@ import Title from './Title';
 
 
 const Card = (props) => {
-    const { service, image, link } = props.card
+    const { service, image } = props.card
     const CardContainer = styled.div`
         text-align: center;
         padding: 20px 0;
