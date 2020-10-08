@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import {Link} from 'react-router-dom'
 import styled, { keyframes } from 'styled-components';
 import { merge, tada, flip } from 'react-animations';
 import logo from '../images/wIcon.png';
 import Hamburger from './Hamburger';
-import Title from './Title';
+import { Primary, Secondary, White } from '../colors';
 
 const tadaFlip = merge(flip, tada);
 
@@ -12,7 +13,7 @@ const bounceModal = keyframes`${tadaFlip}`;
 const StyledNav = styled.nav`
     max-width: 100%;
     height: 12vh;
-    background: #ee3225;
+    background: ${Primary};
     display: flex;
     justify-content: space-between;
     padding: 0 1em;
@@ -22,8 +23,7 @@ const StyledNav = styled.nav`
 const LogoImg = styled.img`
     width: 100px;
     position: relative;
-    top: 2vh;
-    height: 8vh;
+    height: 12vh;
 `;
 
 const NavBar = () => {
@@ -34,6 +34,12 @@ const NavBar = () => {
     changeClassName();
     setModal(!modal);
   };
+  const handleLogo = () => {
+    if (modal) {
+      changeClassName();
+      setModal(false);
+    }
+  }
   const StyledModal = styled.div`
     height: 90vh;
     width: 100%;
@@ -42,7 +48,7 @@ const NavBar = () => {
     flex-direction: column;
     justify-content: space-evenly;
     text-align: center;
-    background: black;
+    background: ${Secondary};
     opacity: .93;
     color: white;
     z-index: 9999;
@@ -53,9 +59,9 @@ const NavBar = () => {
 
   const renderMainLinks = () => (
     <StyledNav>
-      <div>
+      <Link exact to='/' onClick={handleLogo} >
         <LogoImg src={logo} />
-      </div>
+      </Link>
       <Hamburger
         buttonClassName={buttonClassName}
         handleModal={handleModal}
@@ -64,21 +70,27 @@ const NavBar = () => {
   );
   // eslint-disable-next-line consistent-return
   const renderModal = () => {
+    const linkStyle = {
+      color: White,
+      textDecoration: 'none',
+      fontSize: '2em',
+      // border: '1px solid white',
+    }
     if (modal) {
       return (
         <StyledModal>
-          <Title title="About" />
-          <Title title="Projects" />
-          <Title title="Showroom" />
-          <Title title="Contact" />
+          <Link exact to ='/about' onClick={handleModal} style={linkStyle} >About</Link>
+          <Link exact to ='/projects' onClick={handleModal} style={linkStyle}  >Projects</Link>
+          <Link exact to ='/gallery' onClick={handleModal} style={linkStyle}  >Gallery</Link>
+          <Link exact to ='/contact' onClick={handleModal} style={linkStyle} >Contact</Link>
         </StyledModal>
       );
     }
   };
   return (
     <>
-      { renderMainLinks()}
-      { renderModal()}
+      { renderMainLinks() }
+      { renderModal() }
     </>
   );
 };

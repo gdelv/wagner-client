@@ -1,9 +1,8 @@
 .carousel-container .slick-prev:before, .slick-next:before {
-    z-index: 999;
     font-size: 50px;
 }
 .carousel-container button.slick-prev{
-    left: 50px;    
+    left: 25px;    
     z-index: 999;
 }
 .carousel-container button.slick-next{
